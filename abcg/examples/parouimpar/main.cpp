@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     window.setWindowSettings({.width = 600,
                               .height = 600,
                               .showFullscreenButton = false,
-                              .title = "Sierpinski Triangle"});
+                              .title = "Par ou Impar"});
 
     app.run(window);
   } catch (std::exception const &exception) {

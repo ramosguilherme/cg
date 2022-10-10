@@ -1,30 +1,27 @@
 #ifndef WINDOW_HPP_
 #define WINDOW_HPP_
 
-#include <random>
-
 #include "abcgOpenGL.hpp"
+#include <string>
 
 class Window : public abcg::OpenGLWindow {
 protected:
   void onCreate() override;
-  void onPaint() override;
   void onPaintUI() override;
-  void onResize(glm::ivec2 const &size) override;
-  void onDestroy() override;
 
 private:
-  glm::ivec2 m_viewportSize{};
+  static int const m_N{1}; // Board size is m_N x m_N
 
-  GLuint m_VAO{};
-  GLuint m_VBOVertices{};
-  GLuint m_program{};
+  enum class GameState { Play, Draw, WinX, WinO, Par, Impar };
+  GameState m_gameState;
 
-  std::default_random_engine m_randomEngine;
-  std::array<glm::vec2, 3> const m_points{{{0, 1}, {-1, -1}, {1, -1}}};
-  glm::vec2 m_P{};
+  bool m_XsTurn{true};
+  std::array<int, m_N * m_N> m_board{}; // '\0', 'X' or 'O'
 
-  void setupModel();
+  ImFont *m_font{};
+
+  void checkEndCondition();
+  void jogarNovamente();
 };
 
 #endif
