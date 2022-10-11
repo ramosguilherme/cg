@@ -1,5 +1,4 @@
 #include "window.hpp"
-#include <bits/stdc++.h>
 
 void Window::onCreate() {
   // Load font with bigger size for the X's and O's
