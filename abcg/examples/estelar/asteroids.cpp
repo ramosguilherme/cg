@@ -46,7 +46,7 @@ void Asteroids::paint() {
         abcg::glUniform2f(m_translationLoc, asteroid.m_translation.x + j,
                           asteroid.m_translation.y + i);
 
-        abcg::glDrawArrays(GL_TRIANGLE_FAN, 0, asteroid.m_polygonSides + 2);
+        abcg::glDrawArrays(GL_TRIANGLE_STRIP, 0, asteroid.m_polygonSides + 2);
       }
     }
 
